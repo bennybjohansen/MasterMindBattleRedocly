@@ -1,0 +1,58 @@
+get:
+  tags:
+    - Site Statistics
+  summary: Returns site statistics to be shown on front page.
+  description: |
+    This resource shows the information displayed to vistors of the front page
+    You can use `Markdown` here.
+  operationId: getSiteStatistics
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              NoOfGamesPlayed:
+                type: integer
+                description: Number of games played across entire site
+              NoOfRegisteredUsers:
+                type: integer
+                description: Number of registred users on site
+              NoOfOnlineUsers:
+                type: integer
+                description: Number of users online now
+              TopPlayers:
+                type: array
+                description: A list of the top players
+                items:
+                  type: object
+                  properties:
+                    UserId:
+                      type: string
+                      description: Unique Id of player
+                    Name:
+                      type: string
+                      description: Name of player
+          example: {
+            NoOfGamesPlayed: 1000,
+            NoOfRegisteredUsers: 30,
+            NoOfOnlineUsers: 3,
+            TopPlayers: [
+              {
+                UserId: "UserId3",
+                Name: "Benny Bomstaerk"
+              },
+              {
+                UserId: "UserId4",
+                Name: "Peter Pan"
+              }
+            ]
+          }
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

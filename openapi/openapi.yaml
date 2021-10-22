@@ -4,7 +4,7 @@ info:
   title: Example.com
   termsOfService: 'https://example.com/terms/'
   contact:
-    email: contact@example.com
+    email: junk@etvoila.com
     url: 'http://example.com/contact'
   license:
     name: Apache 2.0
@@ -35,6 +35,11 @@ paths:
     $ref: paths/path-item.yaml
   /pathItemWithExamples:
     $ref: paths/path-item-with-examples.yaml
+  /sitestatistics: 
+    $ref: paths/sitestatistics.yaml
+  /users: 
+    $ref: paths/users.yaml
+  
 components:
   securitySchemes:
     main_auth:
@@ -52,3 +57,4 @@ components:
     basic_auth:
       type: http
       scheme: basic
+      

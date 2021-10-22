@@ -1,0 +1,15 @@
+
+
+#UserStatus
+type: string
+description: Possible states a user can be in
+enum:
+  - offLine
+  - onLine
+  - inChallenge
+  - inGame
+x-enum-descriptions:
+  offLine: The user is off line
+  onLine: The user is online
+  inChallenge: The user is playing a challenge
+  inGame: The user is in a regular game against the computer
