@@ -1,0 +1,19 @@
+required:
+  - Message
+  - ErrorCode
+type: object
+properties:
+  Message:
+    type: string
+  ErrorCode:
+    enum:
+      - InvalidRequest
+    type: string
+    x-enum-descriptions:
+      InvalidRequest: Default error code returned when it cannot be determined which part of the request is malformed.
+  ModelState:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string

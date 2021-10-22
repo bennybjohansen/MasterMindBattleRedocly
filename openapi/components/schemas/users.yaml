@@ -1,0 +1,39 @@
+type: object
+properties:
+  __nextLink:
+    type: string
+    description: Optional link to next set of users.
+  Data:
+    type: array
+    items:
+      type: object
+      properties:
+        UserId:
+          type: string
+          description: Unique id of user
+        Name:
+          type: string
+          description: Name of user
+        Picture:
+          type: string
+          description: Url of picture
+        GamesPlayed:
+          type: integer
+          description: Number of games played
+        GamesWon:
+          type: integer
+          description: Number of games won
+        GamesWonOnTime:
+          type: integer
+          description: Number of games won on time.
+        CurrentStatus:
+          type: object
+          description: Current status of this user.
+          properties:
+            Status:
+              $ref: 'UserStatus.yaml'
+            GameOrChallengeId:
+              type: string
+              description: >
+                Id of game or challenge this user is 
+                currently participating in. Null if not participating.

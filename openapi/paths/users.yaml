@@ -1,0 +1,107 @@
+get:
+  tags:
+    - Users
+  summary: Returns a list of users
+  description: |
+    Returns a list of users:
+      - If the caller is a regular user, the list only includes users, who are online.
+      - If the caller is an admin, the list may include all users registered on the site.
+
+      Paging is supported.
+    You can use `Markdown` here.
+  operationId: getUsers
+  parameters:
+    - name: ReturnAll
+      in: query
+      required: false
+      description: >
+        - If false returns users who are online
+        - If true returns all users
+        
+        Note if call is not administartor, only online users will be returned.
+      schema: 
+        type: boolean
+      example: false
+    - name: $top
+      in: query
+      required: false
+      description: Max number of rows
+      schema:
+        type: integer
+      example: 10
+    - name: $skip
+      in: query
+      required: false
+      description: Max number of rows
+      schema:
+        type: integer
+      example: 10
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              __nextLink:
+                type: string
+                description: Optional link to next set of users.
+              Data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    UserId:
+                      type: string
+                      description: Unique id of user
+                    Name:
+                      type: string
+                      description: Name of user
+                    Picture:
+                      type: string
+                      description: Url of picture
+                    GamesPlayed:
+                      type: integer
+                      description: Number of games played
+                    GamesWon:
+                      type: integer
+                      description: Number of games won
+                    GamesWonOnTime:
+                      type: integer
+                      description: Number of games won on time.
+                    CurrentStatus:
+                      type: object
+                      description: Current status of this user.
+                      properties:
+                        Status:
+                          $ref: '../components/schemas/UserStatus.yaml'
+                        GameOrChallengeId:
+                          type: string
+                          description: >
+                            Id of game or challenge this user is 
+                            currently participating in. Null if not participating.
+          example: {
+            "Data":[
+              {
+                UserId: "UserId99",
+                Name: "Benny Bomstaerk",
+                GamesPlayed: 10,
+                GamesWon: 4,
+                GamesWonOnTime: 3,
+                CurrentStatus: {
+                  Status: "inGame"
+                }
+              }
+              ]
+            
+          }
+    '400':
+      description: Bad Request
+      $ref: '../components/responses/BadRequest.yaml'
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

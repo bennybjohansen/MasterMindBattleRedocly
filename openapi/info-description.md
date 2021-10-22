@@ -3,7 +3,7 @@ This is an **example** API to demonstrate features of the OpenAPI specification.
 # Introduction
 
 This API definition is intended to to be a good starting point for
-describing your API in 
+describing your API in a
 
 [OpenAPI/Swagger
 format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
