@@ -44,6 +44,8 @@ get:
       $ref: ../components/responses/Problem.yaml
 
 post:
+  tags:
+    - Events
   x-application-visibility: saxo-only  #only saxo applications are allowed to setup subscriptions
   x-required-operation: op-read-events #requires this user operation access
   operationId: subscribeToEvents
