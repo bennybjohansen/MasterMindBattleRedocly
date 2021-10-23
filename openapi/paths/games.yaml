@@ -1,0 +1,47 @@
+post:
+  tags:
+    - Games
+  summary: Create new game
+  description: Create new game of specified type.
+  operationId: createGame
+  requestBody:
+    content:
+      application/json:
+        schema:
+            type: object
+            properties:
+              GameType:
+                $ref: '../components/schemas/GameType.yaml'
+
+
+
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              GameId:
+                type: string
+                description: The Id of the game.
+              GameStatus:
+                $ref: '../components/schemas/GameStatus.yaml'
+              RowNo:
+                type: integer
+                description: The current active row, will always be 0
+          example: {
+            GameId: "GameId12",
+            GameStatus: "inProgress",
+            RowNo: 0
+          }
+    '400':
+      description: Bad Request
+      $ref: '../components/responses/BadRequest.yaml'
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

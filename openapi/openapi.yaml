@@ -27,14 +27,22 @@ servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
 paths:
-  '/users/{username}':
-    $ref: 'paths/users@{username}.yaml'
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
     $ref: paths/path-item.yaml
   /pathItemWithExamples:
     $ref: paths/path-item-with-examples.yaml
+  /events: 
+    $ref: paths/events.yaml
+  /games: 
+    $ref: paths/games.yaml
+  /games/{GameId}: 
+    $ref: paths/games@{GameId}.yaml
+  /games/{GameId}/moves: 
+    $ref: paths/games@{GameId}@moves.yaml
+  /gamesummaries: 
+    $ref: paths/gamesummaries.yaml
   /sitestatistics: 
     $ref: paths/sitestatistics.yaml
   /users: 

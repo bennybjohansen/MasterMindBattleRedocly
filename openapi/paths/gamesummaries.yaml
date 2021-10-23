@@ -1,0 +1,100 @@
+get:
+  tags:
+    - Game Summaries
+  summary: Get list of game summaries
+  description: |
+    Get list of summaries for games, based on user, status dates.
+    User can only be specified by administrator, else assumes currently logged in user
+    If user is not specified returns game summaries for all users
+    If user IS specified returns game for specified user.
+  operationId: getGameSummaries
+  parameters:
+    - name: UserId
+      in: query
+      required: false
+      description: The id of the user
+      schema:
+        type: string
+    - name: FromDate
+      in: query
+      required: false
+      description: If specified game must be in progress or have ended after fromDate
+      schema:
+        type: string
+        format: date
+    - name: InProgress
+      in: query
+      required: false
+      description: Set to true to specify that only games which are currently in progress should be returned
+      schema:
+        type: boolean
+    - name: $top
+      in: query
+      required: false
+      description: Max number to return
+      schema:
+        type: integer
+    - name: $skip
+      in: query
+      required: false
+      description: Start from record no
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A list containing a summary of each game
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    UserId:
+                      type: string
+                    Name:
+                      type: string
+                    GameId:
+                      type: string
+                    GameStatus:
+                      $ref: '../components/schemas/GameStatus.yaml'
+                    RowNo:
+                      type: integer
+                      description: The current active or most recently active row
+                    Guess:
+                      type: array
+                      items:
+                        type: integer
+                    Score:
+                      type: object
+                      properties:
+                        NoOfCorrectColors:
+                          type: integer
+                        NoOfCorrectLocations:
+                          type: integer
+          example: {
+            "Data":[
+              {
+                UserId: "UserId99",
+                Name: "Benny Bomstaerk",
+                GamesPlayed: 10,
+                GamesWon: 4,
+                GamesWonOnTime: 3,
+                CurrentStatus: {
+                  Status: "inGame"
+                }
+              }
+              ]
+          }
+    '400':
+      description: OK
+      $ref: '../components/responses/BadRequest.yaml'    
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

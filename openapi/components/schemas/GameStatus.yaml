@@ -1,0 +1,14 @@
+
+#GameStatus:
+type: string
+description: Status of game
+enum:
+  - inProgress
+  - userResigned
+  - userLost
+  - userWon
+x-enum-descriptions:
+  inProgress: Game is in progress
+  UserResigned: User resigned
+  UserLost: User lost
+  UserWon: User won

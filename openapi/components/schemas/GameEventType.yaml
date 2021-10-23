@@ -1,0 +1,17 @@
+#GameEventType:
+type: object
+description: Represents an event in the game
+properties:
+  EventId:
+    type: string
+  TimeStamp:
+    type: string
+    format: date-time
+  EventType:
+      $ref: 'EventType.yaml' 
+  UserId:
+    type: string
+  GameId:
+    type: string
+  Message:
+    type: string

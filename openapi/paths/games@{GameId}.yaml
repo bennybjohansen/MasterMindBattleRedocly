@@ -1,0 +1,69 @@
+get:
+  tags:
+    - Games
+  summary: Get details for the specified game
+  description: >
+    Get details for the game identified by gameId
+  operationId: getGame
+  parameters:
+  - name: GameId
+    in: path
+    required: true
+    description: The id of the game for which details are required.
+    schema:
+      type: string
+    example: "GameId12"  
+ 
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              GameId:
+                type: string
+                description: The Id of the game.
+              GameStatus:
+                $ref: '../components/schemas/GameStatus.yaml'
+              GameType:
+                $ref: '../components/schemas/GameType.yaml'
+              StartTime:
+                type: string
+                format: date-time
+              EndTime:
+                type: string
+                format: date-time
+                description: Time of game completion. Not supplied if game is still in progress.
+              Answer:
+                type: array
+                items:
+                  type: integer  
+                description: The answer. Will only be returned if gameStatus is no longer inProgress, or caller has admin rights.
+              Rows:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    Guess:
+                      type: array
+                      items:
+                        type: integer
+                    Score:
+                      type: object
+                      properties:
+                        NoOfCorrectColors:
+                          type: integer
+                        NoOfCorrectLocations:
+                          type: integer
+    '400':
+      description: Bad Request
+      $ref: '../components/responses/BadRequest.yaml'
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

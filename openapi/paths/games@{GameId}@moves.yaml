@@ -1,0 +1,90 @@
+post:
+  tags:
+    - Games
+  summary: Register a new move on the specified game
+  operationId: registerMove
+  description: >
+    Call this to indicate that a player has made a new move.
+    
+  parameters:
+    - name: GameId
+      in: path
+      required: true
+      description: The id of the game on which this move is made
+      schema:
+        type: string
+      example: "GameId12"
+  requestBody:
+    description: Create new game of specified type.
+    content:
+      application/json:
+        schema:
+            type: object
+            properties:
+              Move:
+                $ref: '../components/schemas/MoveType.yaml'
+              Guess:
+                description: > 
+                  Indicates the users choice of colors for each column, if move=guess.
+                type: array
+                items:
+                  type: integer
+        example: {
+          Move: "guess",
+          Guess: [1,2,4,2]
+        }
+ 
+
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              GameId:
+                type: string
+                description: The Id of the game.
+              GameStatus:
+                $ref: '../components/schemas/GameStatus.yaml'
+              RowNo:
+                type: integer
+                description: The current active row between 0 and 9
+              Guess:
+                type: array
+                items:
+                  type: integer
+              Score:
+                type: object
+                properties:
+                  NoOfCorrectColors:
+                    type: integer
+                    description: Number of colors not placed at the right location
+                  NoOfCorrectLocations:
+                    type: integer
+                    description: Number of colors placed at the right location
+              Answer:
+                type: array
+                items:
+                  type: integer
+                description: The answer. Will only be returned if answer is guessed, or gameStatus is no longer inProgress.
+          example: {
+            GameId: "GameId12",
+            GameStatus: "inProgress",
+            RowNo: 3,
+            Guess: [1,2,4,2],
+            Score: {
+              NoOfCorrectColors: 2,
+              NoOfCorrectLocations: 1
+            }
+          }
+    '400':
+      description: Bad Request
+      $ref: '../components/responses/BadRequest.yaml'
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

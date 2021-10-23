@@ -1,0 +1,10 @@
+
+  #MoveType:
+  type: string
+  description: Move made by user
+  enum:
+    - guess
+    - giveUp
+  x-enum-descriptions:
+    guess: This is a regular guess
+    giveUp: The user gives up

@@ -1,0 +1,13 @@
+#EventType:
+type: string
+description: Type of game event
+enum:
+  - userAdded
+  - gameStarted
+  - gameCompleted
+  - moveSubmitted
+x-enum-descriptions:
+  userAdded: A user is added to the game
+  gameStarted: A game has started
+  gameCompleted: A game has ended
+  moveSubmitted: A user has submitted a move
