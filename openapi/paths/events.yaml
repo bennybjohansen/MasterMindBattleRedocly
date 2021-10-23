@@ -1,6 +1,6 @@
 get:
   tags:
-    - Events
+    - Events      
   summary: Returns a list of game events
   description: >
     Returns a list of game events - can only be called by administrator.
