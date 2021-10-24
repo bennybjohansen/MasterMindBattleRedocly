@@ -6,7 +6,7 @@ enum:
   - gameStarted
   - gameCompleted
   - moveSubmitted
-x-enum-descriptions:
+x-enumDescriptions:
   userAdded: A user is added to the game
   gameStarted: A game has started
   gameCompleted: A game has ended

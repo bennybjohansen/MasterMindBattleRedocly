@@ -25,7 +25,7 @@ tags:
   - name: Tag
     description: This is a tag description.
   - name: Events
-    description: Example echo operations.
+    description: This provides a sequential record of all that has happened on the site.
     externalDocs:
       description: Here you can read about how events work in detail
       url: https://developer.saxo

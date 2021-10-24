@@ -6,6 +6,6 @@ description: Type of game
 enum:
   - normal
   - speed
-x-enum-descriptions:
+x-enumDescriptions:
   normal: A normal game
   speed: A speed game

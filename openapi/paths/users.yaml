@@ -47,6 +47,7 @@ get:
               __nextLink:
                 type: string
                 description: Optional link to next set of users.
+                x-nullable: true
               Data:
                 type: array
                 items:
@@ -61,6 +62,7 @@ get:
                     Picture:
                       type: string
                       description: Url of picture
+                      x-nullable: true
                     GamesPlayed:
                       type: integer
                       description: Number of games played

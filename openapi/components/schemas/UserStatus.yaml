@@ -8,7 +8,7 @@ enum:
   - onLine
   - inChallenge
   - inGame
-x-enum-descriptions:
+x-enumDescriptions:
   offLine: The user is off line
   onLine: The user is online
   inChallenge: The user is playing a challenge

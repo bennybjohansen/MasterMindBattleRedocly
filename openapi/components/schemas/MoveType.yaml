@@ -5,6 +5,6 @@
   enum:
     - guess
     - giveUp
-  x-enum-descriptions:
+  x-enumDescriptions:
     guess: This is a regular guess
     giveUp: The user gives up

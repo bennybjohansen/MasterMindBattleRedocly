@@ -9,7 +9,7 @@ properties:
     enum:
       - InvalidRequest
     type: string
-    x-enum-descriptions:
+    x-enumDescriptions:
       InvalidRequest: Default error code returned when it cannot be determined which part of the request is malformed.
   ModelState:
     type: object
