@@ -1,7 +1,7 @@
 
 #GameStatus:
 type: string
-description: Status of game
+description: Status of game ** Updated with description **
 enum:
   - inProgress
   - userResigned
