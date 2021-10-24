@@ -1,6 +1,6 @@
 get:
   tags:
-    - Site Statistics
+    - SiteStatistics
   summary: Returns site statistics to be shown on front page.
   description: |
     This resource shows the information displayed to vistors of the front page

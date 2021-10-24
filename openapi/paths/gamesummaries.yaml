@@ -1,6 +1,6 @@
 get:
   tags:
-    - Game Summaries
+    - Games
   summary: Get list of game summaries
   description: |
     Get list of summaries for games, based on user, status dates.
