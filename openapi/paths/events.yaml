@@ -32,7 +32,17 @@ get:
               Data:
                 type: array
                 items:
-                  $ref: '../components/schemas/GameEventType.yaml'
+                  discriminator: 
+                    propertyName: EventType
+                    mapping: 
+                      userAdded: '../components/schemas/GameEventType.yaml'
+                      gameStarted: '../components/schemas/GameEventType.yaml'
+                      gameCompleted: '../components/schemas/GameEventType.yaml'
+                      moveSubmitted: '../components/schemas/MoveEventType.yaml'
+                  anyOf:
+                    - $ref: '../components/schemas/GameEventType.yaml'
+                    - $ref: '../components/schemas/MoveEventType.yaml'
+
     '400':
       description: OK
       $ref: '../components/responses/BadRequest.yaml'    
@@ -109,9 +119,17 @@ post:
                 description: This property is kept for backwards compatibility.
               Snapshot:
                 title: 'Snapshot of the current data on hand, when subscription was created.'
-                type: array
                 items:
-                  $ref: '../components/schemas/GameEventType.yaml'
+                  discriminator: 
+                    propertyName: EventType
+                    mapping: 
+                      userAdded: '../components/schemas/GameEventType.yaml'
+                      gameStarted: '../components/schemas/GameEventType.yaml'
+                      gameCompleted: '../components/schemas/GameEventType.yaml'
+                      moveSubmitted: '../components/schemas/MoveEventType.yaml'
+                  anyOf:
+                    - $ref: '../components/schemas/GameEventType.yaml'
+                    - $ref: '../components/schemas/MoveEventType.yaml'
           example: {
             "ContextId": "20211012063654081",
             "InactivityTimeout": 120,

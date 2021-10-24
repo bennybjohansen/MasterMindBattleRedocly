@@ -15,4 +15,14 @@ properties:
     type: string
   Message:
     type: string
-    
+  Guess:
+    type: object
+    properties:
+      Move:
+        $ref: 'MoveType.yaml'
+      Guess:
+        description: > 
+          Indicates the users choice of colors for each column, if move=guess.
+        type: array
+        items:
+          type: integer  
